@@ -11,7 +11,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Usa una imagen base de Eclipse Temurin OpenJDK 21 para ejecutar la aplicación
-FROM eclipse-temurin:21
+FROM eclipse-temurin:17
 WORKDIR /app
 
 # Copia el paquete JAR desde la fase de construcción anterior
