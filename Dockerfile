@@ -1,5 +1,5 @@
 # Usa una imagen base de Maven para construir el proyecto
-FROM maven:3.8.6-openjdk-21 AS build
+FROM maven:3.8.6-openjdk-17 AS build
 WORKDIR /app
 
 # Copia el archivo POM y descarga las dependencias
@@ -10,7 +10,7 @@ RUN mvn dependency:go-offline
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Usa una imagen base de OpenJDK para ejecutar la aplicación
+# Usa una imagen base de OpenJDK 21 para ejecutar la aplicación
 FROM openjdk:21-jdk-slim
 WORKDIR /app
 
