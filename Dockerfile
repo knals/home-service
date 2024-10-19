@@ -1,5 +1,5 @@
-# Usa una imagen base de Maven para construir el proyecto
-FROM maven:3.8.8-openjdk-17 AS build
+# Usa una imagen base de Maven con JDK 17 para construir el proyecto
+FROM maven:3.8.6-openjdk-17 AS build
 WORKDIR /app
 
 # Copia el archivo POM y descarga las dependencias
