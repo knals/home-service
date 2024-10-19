@@ -1,5 +1,5 @@
-# Usa una imagen base de Maven para construir el proyecto
-FROM maven:3.8.6-openjdk-17 AS build
+# Usa una imagen base de Maven con JDK 17 para construir el proyecto
+FROM maven:3.8.8-eclipse-temurin-17 AS build
 WORKDIR /app
 
 # Copia el archivo POM y descarga las dependencias
@@ -10,8 +10,8 @@ RUN mvn dependency:go-offline
 COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Usa una imagen base de OpenJDK 21 para ejecutar la aplicación
-FROM openjdk:21-jdk-slim
+# Usa una imagen base de Eclipse Temurin OpenJDK 21 para ejecutar la aplicación
+FROM eclipse-temurin:21-jre-jammy
 WORKDIR /app
 
 # Copia el paquete JAR desde la fase de construcción anterior
